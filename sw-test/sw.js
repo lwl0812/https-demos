@@ -1,4 +1,4 @@
-var version = 'v1';
+var version = 'v2';
 
 self.addEventListener('install', function (event) {
     event.waitUntil(
@@ -8,7 +8,7 @@ self.addEventListener('install', function (event) {
                 '/https-demos/sw-test/index.html',
                 '/https-demos/sw-test/style.css',
                 '/https-demos/sw-test/app.js',
-                '/https-demos/sw-test/qgw.gif',
+                '/https-demos/sw-test/qgw.jpg',
                 '/https-demos/sw-test/offline.png'
             ])
         })
@@ -21,7 +21,7 @@ self.addEventListener('activate', function (event) {
             return Promise.all(
                 cacheNames.map(function (cacheName) {
                     // 如果当前版本和缓存版本不一致
-                    if (cacheName !== VERSION) {
+                    if (cacheName !== version) {
                         return caches.delete(cacheName);
                     }
                 })
